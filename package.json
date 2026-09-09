@@ -1,0 +1,24 @@
+{
+  "name": "ha-heat-pump-overview-card",
+  "version": "0.1.1",
+  "description": "Home Assistant Lovelace card: animated energy and diagnostics overview for heat pumps / AC units.",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MRDonnii/ha-heat-pump-overview-card.git"
+  },
+  "keywords": [
+    "home-assistant",
+    "home-assistant-card",
+    "custom-card",
+    "lovelace",
+    "lovelace-card",
+    "dashboard",
+    "heat-pump",
+    "climate",
+    "energy",
+    "cop"
+  ],
+  "author": "John Thorn Halle",
+  "license": "MIT"
+}
