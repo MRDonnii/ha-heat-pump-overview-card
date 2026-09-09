@@ -1,8 +1,10 @@
-const VERSION = "0.1.1";
+import "./ha-card-list-editor.js";
+const VERSION = "0.2.0";
 
 class HAHeatPumpOverviewCard extends HTMLElement {
   constructor(){super();this.attachShadow({mode:"open"});this._config={};this._hass=undefined;this._signature="";}
   static getStubConfig(){return{title:"Varmepumper",pumps:[]};}
+  static getConfigElement(){const e=document.createElement("ha-card-list-editor");e.definition={roots:[{key:"title",label:"Titel"},{key:"animation",label:"Animation",type:"boolean"},{key:"total_output",label:"Samlet output",type:"entity"},{key:"total_cost",label:"Samlet pris",type:"entity"}],collections:[{key:"pumps",label:"Varmepumper",itemLabel:"varmepumpe",defaults:{name:"Ny varmepumpe"},fields:[{key:"name",label:"Navn"},{key:"brand",label:"Mærke"},{key:"climate",label:"Climate",type:"entity"},{key:"output",label:"Output",type:"entity"},{key:"input",label:"Elforbrug",type:"entity"},{key:"cop",label:"COP",type:"entity"},{key:"daily_energy",label:"Dagligt forbrug",type:"entity"},{key:"daily_cost",label:"Daglig pris",type:"entity"}]}]};return e;}
   setConfig(config){if(!config||!Array.isArray(config.pumps))throw new Error("Varmepumpeoversigt kræver en pumps-liste");this._config={title:"Varmepumper",animation:true,...config};this._signature="";this._render();}
   set hass(hass){this._hass=hass;const ids=[this._config.total_output,this._config.total_cost,...(this._config.pumps||[]).flatMap(p=>Object.values(p))].filter(v=>typeof v==="string"&&v.includes("."));const signature=JSON.stringify(ids.map(id=>{const e=hass?.states?.[id];return[id,e?.state,e?.attributes?.current_temperature,e?.attributes?.temperature,e?.attributes?.hvac_action]}));if(signature===this._signature)return;this._signature=signature;this._render();}
   getCardSize(){return 8;} getGridOptions(){return{rows:"auto",columns:12,min_columns:6};}
