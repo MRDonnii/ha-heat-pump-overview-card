@@ -2,6 +2,9 @@
 
 ![Preview](docs/preview.png)
 
+> HACS installs both JavaScript files automatically. For a manual installation,
+> copy `ha-heat-pump-overview-card.js` and `ha-card-list-editor.js` into the same folder.
+
 A Home Assistant Lovelace card for a fleet of heat pumps / AC units: an
 animated indoor-unit graphic per pump (spinning fan, airflow while active),
 live thermal-output and electrical-input bars, COP, daily energy and cost —
