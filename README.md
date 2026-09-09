@@ -100,3 +100,5 @@ Clicking a pump card (or its **Åbn varmepumpe** button) opens the pump's
 ## License
 
 MIT — see [LICENSE](LICENSE).
+The visual card editor provides entity pickers and add/remove controls for heat
+pumps.
